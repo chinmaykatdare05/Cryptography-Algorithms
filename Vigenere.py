@@ -22,27 +22,22 @@ def vigenere_transform(text, key, operation):
     return "".join(result)
 
 
-def main():
-    print("\nVigenère Cipher\n")
-    choice = input("0. Encrypt\n1. Decrypt\nEnter your choice: ")
-    if choice == "0":
-        plaintext = input("Enter the plaintext: ")
-        key = input("Enter the keyword: ")
-        ciphertext = vigenere_transform(plaintext, key, "encrypt")
-        print("Encrypted text:", ciphertext)
+print("\nVigenère Cipher\n")
+choice = input("0. Encrypt\n1. Decrypt\nEnter your choice: ")
+if choice == "0":
+    plaintext = input("Enter the plaintext: ")
+    key = input("Enter the keyword: ")
+    ciphertext = vigenere_transform(plaintext, key, "encrypt")
+    print("Encrypted text:", ciphertext)
 
-    elif choice == "1":
-        ciphertext = input("Enter the ciphertext: ")
-        key = input("Enter the keyword: ")
-        decrypted_text = vigenere_transform(ciphertext, key, "decrypt")
-        print("Decrypted text:", decrypted_text)
+elif choice == "1":
+    ciphertext = input("Enter the ciphertext: ")
+    key = input("Enter the keyword: ")
+    decrypted_text = vigenere_transform(ciphertext, key, "decrypt")
+    print("Decrypted text:", decrypted_text)
 
-    else:
-        print("Invalid choice. Please choose either 1 or 2.")
-
-
-if __name__ == "__main__":
-    main()
+else:
+    print("Invalid choice. Please choose either 1 or 2.")
 
 
 # # Solve the given example and perform encryption using Vigenere cipher.
