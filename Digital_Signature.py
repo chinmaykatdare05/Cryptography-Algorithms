@@ -32,7 +32,7 @@ def generate_keys(p, q, e):
     phi = (p - 1) * (q - 1)
 
     if gcd(phi, e) != 1:
-        raise ValueError("Invalid public exponent 'e'.")
+        raise ValueError(f"Invalid public exponent {e}")
 
     d = mod_inverse(e, phi)
 
@@ -60,35 +60,33 @@ def verify_signature(signature, message, public_key):
         return False  # Signature is not valid if decrypted signature differs from the original message
 
 
-# Main program
-try:
-    # Input prime numbers p, q, and public exponent e from the user
-    p = int(input("Enter prime number p: "))
-    q = int(input("Enter prime number q: "))
-    e = int(input("Enter public exponent e: "))
 
-    # Generate public and private keys using user-provided input
-    public_key, private_key = generate_keys(p, q, e)
-    print("Public Key (e, n):", public_key)
-    print("Private Key (d, n):", private_key)
+# Input prime numbers p, q, and public exponent e from the user
+p = int(input("Enter prime number p: "))
+q = int(input("Enter prime number q: "))
+e = int(input("Enter public exponent e: "))
 
-    # Input the message to be signed
-    message = int(input("Enter the message: "))
+# Generate public and private keys using user-provided input
+public_key, private_key = generate_keys(p, q, e)
+print("Public Key (e, n):", public_key)
+print("Private Key (d, n):", private_key)
 
-    # Generate digital signature using the private key
-    signature = sign_message(message, private_key)
-    print("Digital Signature:", signature)
+# Input the message to be signed
+message = int(input("Enter the message: "))
 
-    # Input the received signature for verification
-    received_signature = int(input("Enter the received signature: "))
+# Generate digital signature using the private key
+signature = sign_message(message, private_key)
+print("Digital Signature:", signature)
 
-    # Verify the signature using the public key
-    if verify_signature(received_signature, message, public_key):
-        print("The message is authentic.")
-    else:
-        print("The message is altered. Discard.")
-except ValueError as e:
-    print("Error:", e)
+# Input the received signature for verification
+received_signature = int(input("Enter the received signature: "))
+
+# Verify the signature using the public key
+if verify_signature(received_signature, message, public_key):
+    print("The message is authentic.")
+else:
+    print("The message is altered. Discard.")
+
 
 
 # # Implement RSA Digital Signature Scheme. Inputs p, q and e will be given.
