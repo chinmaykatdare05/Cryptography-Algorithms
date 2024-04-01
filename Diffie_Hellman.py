@@ -26,29 +26,25 @@ def generate_keys(q, alpha, XA, XB):
     return YA, YB, secret_key_A, secret_key_B
 
 
-def main():
-    q = int(input("Enter the prime number q: "))
-    alpha = int(input("Enter the primitive root α: "))
-    XA = int(input("Enter Alice's private key XA: "))
-    XB = int(input("Enter Bob's private key XB: "))
+q = int(input("Enter the prime number q: "))
+alpha = int(input("Enter the primitive root α: "))
+XA = int(input("Enter Alice's private key XA: "))
+XB = int(input("Enter Bob's private key XB: "))
 
-    if XA < 1 or XA >= q or XB < 1 or XB >= q:
-        print("Invalid private key values. They should be in the range [1, q-1].")
-        return
+if XA < 1 or XA >= q or XB < 1 or XB >= q:
+    print(f"Invalid private key values. They should be in the range [1, {q}-1].")
+    return
 
-    YA, YB, secret_key_A, secret_key_B = generate_keys(q, alpha, XA, XB)
+YA, YB, secret_key_A, secret_key_B = generate_keys(q, alpha, XA, XB)
 
-    print("\nPublic keys:")
-    print("YA (Alice's public key):", YA)
-    print("YB (Bob's public key):", YB)
+print("\nPublic keys:")
+print("YA (Alice's public key):", YA)
+print("YB (Bob's public key):", YB)
 
-    print("\nShared keys:")
-    print("Shared Key for Alice:", secret_key_A)
-    print("Shared Key for Bob:", secret_key_B)
+print("\nShared keys:")
+print("Shared Key for Alice:", secret_key_A)
+print("Shared Key for Bob:", secret_key_B)
 
-
-if __name__ == "__main__":
-    main()
 
 
 # # Implement Diffie Hellman (DH) Key Exchange algorithm. Inputs q, ∝, XA & XB will be given.
