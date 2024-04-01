@@ -66,22 +66,18 @@ def playfair_cipher(text, key, option):
     return square_key, "".join(result)
 
 
-def main():
-    text = input("Enter text: ")
-    key = input("Enter the key: ")
-    option = input("Enter 0 to encrypt or 1 to decrypt: ")
-    square_key, result = playfair_cipher(text, key, option)
-    print("Key Matrix:")
-    for row in square_key:
-        print(row)
-    if option == "0":
-        print("Encrypted Text:", result)
-    elif option == "1":
-        print("Decrypted Text:", result)
+text = input("Enter text: ")
+key = input("Enter the key: ")
+option = input("Enter 0 to encrypt or 1 to decrypt: ")
+square_key, result = playfair_cipher(text, key, option)
+print("Key Matrix:")
+for row in square_key:
+    print(row)
+if option == "0":
+    print("Encrypted Text:", result)
+elif option == "1":
+    print("Decrypted Text:", result)
 
-
-if __name__ == "__main__":
-    main()
 
 
 # # Solve the given example. Generate a key matrix and perform encryption using Playfair cipher.
@@ -135,6 +131,7 @@ if __name__ == "__main__":
 # for i in range(0, 25, 5):
 #     print(" ".join(key_square[i : i + 5]))
 # print("\nCiphertext:", ciphertext)
+
 
 
 # # Solve the given example. Generate a key matrix and perform decryption using Playfair cipher.
